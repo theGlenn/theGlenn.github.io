@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: 'GTWalsheim', Avenir, Arial, Helvetica, sans-serif;
-  color: white;
+  color: #FFFFFA;
   display: flex;
   background-color: #0E1116; }
 
@@ -26,6 +26,8 @@ section {
     font-size: 72px;
     line-height: 0.5em; }
   section h2 {
+    margin-top: 42px;
+    margin-left: 16px;
     font-size: 50px; }
   section h3 {
     font-size: 36px;
@@ -36,17 +38,18 @@ section {
 #left {
   flex: 1; }
   #left #bottom {
-    padding-top: 125px;
+    padding-top: 86px;
     display: flex;
     align-items: center;
     justify-content: space-around; }
     #left #bottom ul {
+      text-align: end;
       font-size: 42px; }
       #left #bottom ul a {
-        color: white; }
+        color: #FFFFFA; }
     #left #bottom > a {
       font-size: 36px;
-      color: white;
+      color: #FFFFFA;
       background-color: #2176FF;
       padding: 16px 32px;
       border-radius: 15px; }

@@ -1,5 +1,6 @@
 $black: #0E1116;
 $blue: #2176FF;
+$white: #FFFFFA;
 
 @font-face {
   font-family: 'GTWalsheim';
@@ -13,7 +14,7 @@ $blue: #2176FF;
 body {
   margin: 0;
   font-family: 'GTWalsheim', Avenir, Arial, Helvetica, sans-serif;
-  color: white;
+  color: $white;
   display: flex;
   background-color: $black;
 }
@@ -35,6 +36,8 @@ section {
   }
 
   h2 {
+    margin-top: 42px;
+    margin-left: 16px;
     font-size: 50px;
   }
 
@@ -49,19 +52,20 @@ section {
 #left {
   flex: 1;
   #bottom {
-    padding-top: 125px;
+    padding-top: 86px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     ul {
+      text-align: end;
       font-size: 42px;
       a {
-        color: white;
+        color: $white;
       }
     }
     > a {
       font-size: 36px;
-      color: white;
+      color: $white;
       background-color: #2176FF;
       padding: 16px 32px;
       border-radius: 15px;
