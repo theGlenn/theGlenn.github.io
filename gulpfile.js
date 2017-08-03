@@ -59,9 +59,14 @@ gulp.task('default', function (callback) {
   )
 });
 
+gulp.task('gh', function () {
+  return gulp.src('src/res/**/*')
+  .pipe(gulp.dest('dist'))
+});
+
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 
-    ['sass', 'useref', 'fonts'],
+    ['sass', 'useref', 'fonts', 'gh'],
     callback
   )
 });
