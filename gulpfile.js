@@ -4,6 +4,7 @@ const useref = require('gulp-useref');
 const uglify = require('gulp-uglify');
 const cssnano = require('gulp-cssnano');
 const gulpIf = require('gulp-if');
+const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const runSequence = require('run-sequence');
 const browserSync = require('browser-sync').create();
@@ -38,6 +39,13 @@ gulp.task('useref', function(){
     .pipe(gulp.dest('dist'))
 });
 
+gulp.task('images', function(){
+  return gulp.src('src/images/**/*.+(png|jpg|jpeg|gif|svg)')
+  .pipe(cache(imagemin({
+    interlaced: true
+  })))
+  .pipe(gulp.dest('dist/images'))
+});
 
 
 gulp.task('fonts', function() {
@@ -66,7 +74,7 @@ gulp.task('gh', function () {
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 
-    ['sass', 'useref', 'fonts', 'gh'],
+    ['sass', 'useref', 'images', 'fonts', 'gh'],
     callback
   )
 });

@@ -26,7 +26,7 @@ section {
     font-size: 72px;
     line-height: 0.5em; }
   section h2 {
-    margin-top: 42px;
+    margin-top: 48px;
     margin-left: 16px;
     font-size: 50px; }
   section h3 {
@@ -66,4 +66,5 @@ section {
   width: 6px;
   height: 240px;
   background-color: #2176FF;
-  margin: 0; }
+  margin: 0;
+  margin: 16px; }
