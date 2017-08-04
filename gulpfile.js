@@ -53,6 +53,10 @@ gulp.task('fonts', function() {
   .pipe(gulp.dest('dist/fonts'))
 });
 
+gulp.task('favicons', function() {
+  return gulp.src('src/favicons/**/*')
+  .pipe(gulp.dest('dist/fonts'))
+});
 
 gulp.task('watch', ['browserSync', 'sass'], function (){
   gulp.watch('src/scss/**/*.scss', ['sass']); 
