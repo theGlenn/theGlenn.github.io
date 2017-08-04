@@ -1,11 +1,13 @@
 $black: #0E1116;
 $blue: #2176FF;
 $white: #FFFFFA;
+$phone: 736px;
 
 @font-face {
   font-family: 'GTWalsheim';
   src:  url('./../fonts/fonts/gt-walsheim-bold-web.ttf') format('ttf');
 }
+
 
 * {
   box-sizing: border-box; 
@@ -17,6 +19,7 @@ body {
   color: $white;
   display: flex;
   background-color: $black;
+  flex-wrap: wrap;
 }
 
 a {
@@ -24,21 +27,34 @@ a {
 }
 ul {
   list-style: none;
+  padding: 0;
 }
 
 section {
   padding: 50px;
   max-height: none;
   height: 100vh;
+  @media screen and (max-width: $phone){
+    height: initial;
+  }
   h1 {
     font-size: 72px;
     line-height: 0.5em;
+    @media screen and (max-width: $phone) {
+      font-size: 62px;
+      line-height: 1;
+    }
   }
 
   h2 {
     margin-top: 48px;
     margin-left: 16px;
     font-size: 50px;
+    @media screen and (max-width: $phone) {
+      margin-top: 32px;
+      font-size: 36px;
+       line-height: 2;
+    }
   }
 
   h3 {
@@ -46,7 +62,19 @@ section {
     margin: auto;
     position: relative;
     margin-left: 5em;
-  } 
+    @media screen and (max-width: $phone) {
+      font-size: 32px;
+    }
+  }
+  .txt-rotate {
+    color: $blue;
+  }
+  @media screen and (max-width: $phone) {
+    h3, h2, h2 {
+      margin: auto;
+      margin-left: 0;
+    }
+  }
 }
 
 #left {
@@ -54,6 +82,7 @@ section {
   #bottom {
     padding-top: 86px;
     display: flex;
+    flex-wrap: wrap-reverse;
     align-items: center;
     justify-content: space-around;
     ul {
@@ -69,6 +98,12 @@ section {
       background-color: #2176FF;
       padding: 16px 32px;
       border-radius: 15px;
+      text-align: center;
+    }
+    @media screen and (max-width: $phone) {
+      ul {
+        text-align: center;
+      }
     }
   }
 }
@@ -78,11 +113,18 @@ section {
   font-size: 64px;
   background-color: white;
   padding: 50px 26px;
-  ul {
-    padding: 0;
+  @media screen and (max-width: $phone){
+    padding: 50px;
+    height: initial;
+    width: 100%;
   }
 }
 
+@media screen and (max-width: $phone) {
+  #divider {
+    display: none;
+  }
+}
 #divider {
   width: 6px;
   height: 240px;

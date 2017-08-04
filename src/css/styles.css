@@ -10,36 +10,60 @@ body {
   font-family: 'GTWalsheim', Avenir, Arial, Helvetica, sans-serif;
   color: #FFFFFA;
   display: flex;
-  background-color: #0E1116; }
+  background-color: #0E1116;
+  flex-wrap: wrap; }
 
 a {
   color: #2176FF; }
 
 ul {
-  list-style: none; }
+  list-style: none;
+  padding: 0; }
 
 section {
   padding: 50px;
   max-height: none;
   height: 100vh; }
+  @media screen and (max-width: 736px) {
+    section {
+      height: initial; } }
   section h1 {
     font-size: 72px;
     line-height: 0.5em; }
+    @media screen and (max-width: 736px) {
+      section h1 {
+        font-size: 62px;
+        line-height: 1; } }
   section h2 {
     margin-top: 48px;
     margin-left: 16px;
     font-size: 50px; }
+    @media screen and (max-width: 736px) {
+      section h2 {
+        margin-top: 32px;
+        font-size: 36px;
+        line-height: 2; } }
   section h3 {
     font-size: 36px;
     margin: auto;
     position: relative;
     margin-left: 5em; }
+    @media screen and (max-width: 736px) {
+      section h3 {
+        font-size: 32px; } }
+  section .txt-rotate {
+    color: #2176FF; }
+  @media screen and (max-width: 736px) {
+    section h3, section h2, section h2 {
+      margin: auto;
+      margin-left: 0; } }
 
 #left {
   flex: 1; }
   #left #bottom {
     padding-top: 86px;
     display: flex;
+    flex-wrap: wrap-reverse;
     align-items: center;
     justify-content: space-around; }
     #left #bottom ul {
@@ -52,15 +76,26 @@ section {
       color: #FFFFFA;
       background-color: #2176FF;
       padding: 16px 32px;
-      border-radius: 15px; }
+      border-radius: 15px;
+      text-align: center; }
+    @media screen and (max-width: 736px) {
+      #left #bottom ul {
+        text-align: center; } }
 
 #right {
   color: black;
   font-size: 64px;
   background-color: white;
   padding: 50px 26px; }
-  #right ul {
-    padding: 0; }
+  @media screen and (max-width: 736px) {
+    #right {
+      padding: 50px;
+      height: initial;
+      width: 100%; } }
+
+@media screen and (max-width: 736px) {
+  #divider {
+    display: none; } }
 
 #divider {
   width: 6px;
