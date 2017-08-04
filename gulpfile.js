@@ -55,7 +55,7 @@ gulp.task('fonts', function() {
 
 gulp.task('favicons', function() {
   return gulp.src('src/favicons/**/*')
-  .pipe(gulp.dest('dist/fonts'))
+  .pipe(gulp.dest('dist/favicons'))
 });
 
 gulp.task('watch', ['browserSync', 'sass'], function (){
@@ -78,7 +78,7 @@ gulp.task('gh', function () {
 
 gulp.task('build', function (callback) {
   runSequence('clean:dist', 
-    ['sass', 'useref', 'images', 'fonts', 'gh'],
+    ['sass', 'useref', 'images', 'fonts', 'favicons', 'gh'],
     callback
   )
 });
