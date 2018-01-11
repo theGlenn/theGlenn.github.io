@@ -36,13 +36,17 @@ section {
         line-height: 1; } }
   section h2 {
     margin-top: 48px;
-    margin-left: 16px;
-    font-size: 50px; }
+    /*margin-left: 16px;*/ }
     @media screen and (max-width: 736px) {
       section h2 {
-        margin-top: 32px;
-        font-size: 36px;
-        line-height: 2; } }
+        font-size: 36px; } }
+    section h2 > a {
+      font-size: 24px;
+      color: #FFFFFA;
+      background-color: #2176FF;
+      padding: 8px 16px;
+      border-radius: 15px;
+      text-align: center; }
   section h3 {
     font-size: 36px;
     margin: auto;
@@ -55,13 +59,20 @@ section {
     color: #2176FF; }
   @media screen and (max-width: 736px) {
     section h3, section h2, section h2 {
-      margin: auto;
+      /*margin: auto;*/
       margin-left: 0; } }
+
+@media screen and (max-width: 736px) {
+  #talk-video iframe {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; } }
 
 #left {
   flex: 1; }
   #left #bottom {
-    padding-top: 86px;
+    padding-top: 72px;
     display: flex;
     flex-wrap: wrap-reverse;
     align-items: center;
@@ -71,13 +82,6 @@ section {
       font-size: 42px; }
       #left #bottom ul a {
         color: #FFFFFA; }
-    #left #bottom > a {
-      font-size: 36px;
-      color: #FFFFFA;
-      background-color: #2176FF;
-      padding: 16px 32px;
-      border-radius: 15px;
-      text-align: center; }
     @media screen and (max-width: 736px) {
       #left #bottom ul {
         text-align: center; } }
