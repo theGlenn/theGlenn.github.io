@@ -1,6 +1,6 @@
 #!/bin/bash
 gulp build
-git subtree push --prefix --force dist origin master
+git subtree push --prefix dist origin master
 
 BUILDS=`git rev-list --all --count`
 git add .
