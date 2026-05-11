@@ -24,7 +24,7 @@
     --bg: #07090a;
     --ink: #eef0e6;
     --ink-dim: rgba(238, 240, 230, 0.45);
-    --accent: #f5b700;
+    --accent: #F29559;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -135,10 +135,10 @@
     width: 0.55ch;
     height: 0.95em;
     background: var(--accent);
-    box-shadow: 0 0 14px rgba(245, 183, 0, 0.55);
+    box-shadow: 0 0 14px rgba(242, 149, 89, 0.55);
     margin-left: 0.12em;
     vertical-align: -0.08em;
-    animation: caret 1.05s steps(1, end) infinite;
+    animation: caret 1.8s steps(1, end) infinite;
   }
   @keyframes caret { 50% { opacity: 0; } }
   .hero p {
@@ -169,13 +169,27 @@
     text-transform: uppercase;
     color: var(--ink-dim);
   }
-  .section-label.lead::before {
-    content: '';
-    width: 6px; height: 6px;
-    border: 1px solid var(--accent);
-    background: var(--accent);
-    transform: rotate(45deg);
+  .section-label .loader {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5px;
+    width: 10px;
+    height: 10px;
     flex-shrink: 0;
+  }
+  .section-label .loader i {
+    background: var(--accent);
+    opacity: 0.2;
+    animation: loaderPulse 0.9s linear infinite;
+  }
+  .section-label .loader i:nth-child(1) { animation-delay: 0s;     }
+  .section-label .loader i:nth-child(2) { animation-delay: 0.225s; }
+  .section-label .loader i:nth-child(4) { animation-delay: 0.45s;  }
+  .section-label .loader i:nth-child(3) { animation-delay: 0.675s; }
+  @keyframes loaderPulse {
+    0%, 22% { opacity: 1; }
+    44%, 100% { opacity: 0.2; }
   }
   .section-label::after {
     content: '';
@@ -204,7 +218,7 @@
     color: var(--ink);
     transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
   }
-  .logo:hover { border-color: rgba(245, 183, 0, 0.7); background: rgba(15, 19, 20, 0.7); transform: translateY(-1px); }
+  .logo:hover { border-color: rgba(242, 149, 89, 0.7); background: rgba(15, 19, 20, 0.7); transform: translateY(-1px); }
   .logo .mark {
     width: 24px; height: 24px;
     display: inline-flex;
@@ -374,7 +388,7 @@
     transition: background 100ms ease, border-color 100ms ease;
   }
   .cmdk-item.active {
-    background: rgba(245,183,0,0.07);
+    background: rgba(242,149,89,0.07);
     border-left-color: var(--accent);
   }
   .cmdk-item .kind {
@@ -489,7 +503,7 @@
       </div>
 
       <div class="section">
-        <div class="section-label lead">Building</div>
+        <div class="section-label lead"><span class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Building</div>
         <div class="logos">
           <a class="logo" href="https://www.xybrid.ai/" target="_blank" rel="noreferrer">
             <span class="mark"><img src="assets/logos/xybrid.jpg" alt=""></span>
@@ -647,7 +661,7 @@
       uPulseWidth:  { value: 6.0 },
       uMaxRadius:   { value: 200.0 },
       uBaseColor:   { value: new THREE.Color('#4a5a3d') },
-      uScanColor:   { value: new THREE.Color('#f5b700') },
+      uScanColor:   { value: new THREE.Color('#F29559') },
       uHighColor:   { value: new THREE.Color('#c8d6a8') },
       uFogColor:    { value: new THREE.Color('#07090a') },
       uPulseDir:    { value: new THREE.Vector2(1.0, 1.0).normalize() },
