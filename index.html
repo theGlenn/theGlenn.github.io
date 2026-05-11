@@ -24,7 +24,7 @@
     --bg: #07090a;
     --ink: #eef0e6;
     --ink-dim: rgba(238, 240, 230, 0.45);
-    --accent: #ff8a3d;
+    --accent: #f5b700;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
@@ -135,7 +135,7 @@
     width: 0.55ch;
     height: 0.95em;
     background: var(--accent);
-    box-shadow: 0 0 14px rgba(255, 138, 61, 0.55);
+    box-shadow: 0 0 14px rgba(245, 183, 0, 0.55);
     margin-left: 0.12em;
     vertical-align: -0.08em;
     animation: caret 1.05s steps(1, end) infinite;
@@ -204,7 +204,7 @@
     color: var(--ink);
     transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
   }
-  .logo:hover { border-color: rgba(255, 138, 61, 0.7); background: rgba(15, 19, 20, 0.7); transform: translateY(-1px); }
+  .logo:hover { border-color: rgba(245, 183, 0, 0.7); background: rgba(15, 19, 20, 0.7); transform: translateY(-1px); }
   .logo .mark {
     width: 24px; height: 24px;
     display: inline-flex;
@@ -374,7 +374,7 @@
     transition: background 100ms ease, border-color 100ms ease;
   }
   .cmdk-item.active {
-    background: rgba(255,138,61,0.07);
+    background: rgba(245,183,0,0.07);
     border-left-color: var(--accent);
   }
   .cmdk-item .kind {
@@ -499,7 +499,7 @@
           <a class="logo" href="https://www.getmirage.co/" target="_blank" rel="noreferrer">
             <span class="mark"><img src="https://www.google.com/s2/favicons?domain=getmirage.co&sz=128" alt=""></span>
             <span class="name">Mirage</span>
-            <span class="role">Co-founder</span>
+            <span class="role">Powered by Xybrid</span>
           </a>
         </div>
       </div>
@@ -647,7 +647,7 @@
       uPulseWidth:  { value: 6.0 },
       uMaxRadius:   { value: 200.0 },
       uBaseColor:   { value: new THREE.Color('#4a5a3d') },
-      uScanColor:   { value: new THREE.Color('#ff8a3d') },
+      uScanColor:   { value: new THREE.Color('#f5b700') },
       uHighColor:   { value: new THREE.Color('#c8d6a8') },
       uFogColor:    { value: new THREE.Color('#07090a') },
       uPulseDir:    { value: new THREE.Vector2(1.0, 1.0).normalize() },
