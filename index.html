@@ -1,97 +1,1067 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <title>Glenn Sonna</title>
-  <meta charset="utf-8">
-  <meta property="og:title" content="Glenn Sonna" />
-  <meta property="og:description" content="Freelance software developer / consultant / trainer" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="http://glennsonna.com/" />
-  <meta property="og:image" content="http://glennsonna.com/images/fb.jpg" />
-  <meta property="og:image:type" content="image/jpeg" />
-  <meta property="og:image:width" content="1600">
-  <meta property="og:image:height" content="976">
-  <meta property="og:site_name" content="Freelance software developer / consultant / trainer" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>glennso.dev — Glenn Sonna</title>
+<meta name="description" content="Engineer & entrepreneur. Currently building the future of AI apps at Xybrid.">
+<meta name="author" content="Glenn Sonna">
+<meta property="og:title" content="glennso.dev — Glenn Sonna">
+<meta property="og:description" content="Engineer & entrepreneur. Currently building the future of AI apps at Xybrid.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://glennso.dev/">
+<link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+<link rel="shortcut icon" type="image/x-icon" href="favicons/favicon.ico">
+<link rel="manifest" href="favicons/manifest.json">
+<meta name="theme-color" content="#07090a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090a;
+    --ink: #eef0e6;
+    --ink-dim: rgba(238, 240, 230, 0.45);
+    --accent: #F29559;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100%; height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  #scene {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+    animation: sceneIn 900ms ease-out 80ms both;
+  }
 
-  <meta itemprop="name" content="Freelance software developer / consultant / trainer">
-  <meta itemprop="description" content="Freelance software developer / consultant / trainer">
-  <meta itemprop="image" content="http://glennsonna.com/images/fb.jpg">
+  /* ─────────────── load choreography ─────────────── */
+  @keyframes sceneIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes contentIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .chrome.top    { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 450ms both; }
+  .col > .hero    { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both; }
+  .col > .section:nth-of-type(1) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 780ms  both; }
+  .col > .section:nth-of-type(2) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 920ms  both; }
+  .col > .section:nth-of-type(3) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 1060ms both; }
+  .col > .section:nth-of-type(4) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 1200ms both; }
+  .cmdk-hint     { animation: contentIn 600ms cubic-bezier(0.22, 1, 0.36, 1) 1400ms both; }
 
-  <meta name="description" content="Freelance software developer / consultant / trainer" />
-  <meta name="author" content="Glenn Sonna">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  @media (prefers-reduced-motion: reduce) {
+    #scene, .chrome.top, .col > .hero, .col > .section, .cmdk-hint {
+      animation: none !important;
+    }
+  }
+  /* very light placeholder chrome so the screen isn't blank — content layer comes next */
+  .chrome {
+    position: fixed;
+    left: 32px; right: 32px;
+    pointer-events: none;
+    z-index: 10;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .chrome.top { top: 28px; display: flex; justify-content: space-between; align-items: center; }
+  .chrome.bot { bottom: 28px; display: flex; justify-content: space-between; align-items: center; }
+  .brand {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    font-size: 13px;
+  }
+  .brand span { color: var(--accent); }
+  .pulse-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    margin-right: 8px;
+    vertical-align: middle;
+    animation: blink 4s linear infinite;
+  }
+  @keyframes blink {
+    0%, 5% { opacity: 1; }
+    20%, 100% { opacity: 0.25; }
+  }
+  .readout { display: flex; gap: 24px; }
+  .readout b { color: var(--ink); font-weight: 500; }
 
-  <!-- Calendly link widget begin -->
-  <link href="https://calendly.com/assets/external/widget.css" rel="stylesheet">
-  <!-- Calendly link widget end -->
+  /* ─────────────── content overlay ─────────────── */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: minmax(0, 560px) 1fr;
+    padding: 84px 64px 64px 64px;
+    align-content: start;
+  }
+  /* fade content under top/bottom chrome */
+  .overlay::before, .overlay::after {
+    content: '';
+    position: fixed;
+    left: 0; right: 0;
+    height: 64px;
+    pointer-events: none;
+    z-index: 6;
+  }
+  .overlay::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(7,9,10,0.92), rgba(7,9,10,0));
+  }
+  .overlay::after {
+    bottom: 0;
+    height: 130px;
+    background: linear-gradient(to top,
+      rgba(7,9,10,0.98) 0%,
+      rgba(7,9,10,0.88) 35%,
+      rgba(7,9,10,0.55) 70%,
+      rgba(7,9,10,0) 100%
+    );
+  }
+  .col {
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 560px;
+    max-height: calc(100vh - 148px);
+    overflow-y: auto;
+    padding-bottom: 130px;
+    scrollbar-width: none;
+    mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 130px), transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 130px), transparent 100%);
+  }
+  .col::-webkit-scrollbar { display: none; }
+  /* hero */
+  .hero { display: flex; flex-direction: column; gap: 14px; }
+  .hero h1 {
+    font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .hero h1 .cursor {
+    display: inline-block;
+    width: 0.55ch;
+    height: 0.95em;
+    background: var(--accent);
+    box-shadow: 0 0 14px rgba(242, 149, 89, 0.55);
+    margin-left: 0.12em;
+    vertical-align: -0.08em;
+    animation: caret 1.8s steps(1, end) infinite;
+  }
+  @keyframes caret { 50% { opacity: 0; } }
+  .hero p {
+    font-family: 'Newsreader', Georgia, 'Iowan Old Style', serif;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--ink-dim);
+    max-width: 44ch;
+  }
+  .hero p b { color: var(--ink); font-weight: 500; }
+  .hero p .inline-ref {
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(238, 240, 230, 0.25);
+    transition: color 160ms ease, border-color 160ms ease;
+  }
+  .hero p .inline-ref:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
-  <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  /* section */
+  .section { display: flex; flex-direction: column; gap: 14px; }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .section-label .loader {
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1.5px;
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+  .section-label .loader i {
+    background: var(--accent);
+    opacity: 0.2;
+    animation: loaderPulse 0.9s linear infinite;
+  }
+  .section-label .loader i:nth-child(1) { animation-delay: 0s;     }
+  .section-label .loader i:nth-child(2) { animation-delay: 0.225s; }
+  .section-label .loader i:nth-child(4) { animation-delay: 0.45s;  }
+  .section-label .loader i:nth-child(3) { animation-delay: 0.675s; }
+  @keyframes loaderPulse {
+    0%, 22% { opacity: 1; }
+    44%, 100% { opacity: 0.2; }
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(238,240,230,0.18), rgba(238,240,230,0));
+  }
+  .section-label .count { color: rgba(238,240,230,0.3); margin-left: auto; padding-left: 12px; }
 
-  <!-- favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
-  <link rel="shortcut icon" type="image/x-icon" href="favicons/favicon.ico">
-  <link rel="manifest" href="favicons/manifest.json">
-  <meta name="theme-color" content="#ffffff">
-  <!-- favicon -->
+  /* logo wordmark — building (medium) */
+  .logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 14px;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 1px solid rgba(238,240,230,0.12);
+    background: rgba(7, 9, 10, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+  }
+  .logo:hover { border-color: rgba(242, 149, 89, 0.7); background: rgba(15, 19, 20, 0.7); transform: translateY(-1px); }
+  .logo .mark {
+    width: 24px; height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 14px;
+    border-radius: 5px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: rgba(238,240,230,0.04);
+  }
+  .logo .mark img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .logo .name {
+    font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+  }
+  .logo .role {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    padding-left: 10px;
+    margin-left: 4px;
+    border-left: 1px solid rgba(238,240,230,0.12);
+  }
+  /* built — smaller, more inline */
+  .logos.small { gap: 8px; }
+  .logos.small .logo { padding: 8px 12px; }
+  .logos.small .logo .name { font-size: 12px; }
+  .logos.small .logo .mark { font-size: 11px; width: 16px; height: 16px; border-radius: 4px; }
 
-  <link rel="stylesheet" href="css/styles.min.css">
+  /* links row */
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px 10px 0;
+    margin-right: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    border-right: 1px solid rgba(238,240,230,0.12);
+    transition: color 160ms ease;
+  }
+  .link:last-child { border-right: 0; margin-right: 0; }
+  .link:hover { color: var(--accent); }
+  .link .arrow {
+    color: var(--ink-dim);
+    transition: color 160ms ease, transform 160ms ease;
+  }
+  .link:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+
+  /* articles */
+  .articles { display: flex; flex-direction: column; gap: 2px; }
+  .article {
+    display: grid;
+    grid-template-columns: 88px 1fr 24px;
+    align-items: baseline;
+    gap: 18px;
+    padding: 14px 4px;
+    border-bottom: 1px dashed rgba(238,240,230,0.08);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    transition: padding 200ms ease, color 160ms ease;
+  }
+  .article:last-child { border-bottom: 0; }
+  .article .date {
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+  }
+  .article .title { line-height: 1.35; font-family: 'Newsreader', Georgia, 'Iowan Old Style', serif; font-size: 16px; }
+  .article .arrow { color: var(--ink-dim); justify-self: end; transition: color 160ms ease, transform 160ms ease; }
+  .article:hover { padding-left: 12px; color: var(--accent); }
+  .article:hover .arrow { color: var(--accent); transform: translateX(3px); }
+  .article:hover .date { color: var(--accent); opacity: 0.7; }
+
+  /* mobile-ish narrowing */
+  @media (max-width: 880px) {
+    .overlay { grid-template-columns: 1fr; padding: 80px 32px; }
+    .hero h1 { font-size: 42px; }
+    .chrome { left: 20px; right: 20px; }
+  }
+
+  /* command bar (⌘K) */
+  .cmdk-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(7,9,10,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: none;
+    z-index: 50;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 16vh;
+    animation: cmdkFade 140ms ease-out;
+  }
+  .cmdk-backdrop.open { display: flex; }
+  @keyframes cmdkFade { from { opacity: 0; } to { opacity: 1; } }
+  .cmdk {
+    width: 560px; max-width: calc(100vw - 32px);
+    background: rgba(15, 19, 20, 0.94);
+    border: 1px solid rgba(238,240,230,0.10);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    transform: translateY(0);
+    animation: cmdkRise 180ms cubic-bezier(0.22,1,0.36,1);
+  }
+  @keyframes cmdkRise { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .cmdk-input-wrap {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(238,240,230,0.06);
+  }
+  .cmdk-input-wrap .glyph {
+    width: 14px; height: 14px;
+    color: var(--accent);
+  }
+  .cmdk-input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    color: var(--ink);
+    font: 13px ui-monospace, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.01em;
+  }
+  .cmdk-input::placeholder { color: rgba(238,240,230,0.32); }
+  .cmdk-esc {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    border: 1px solid rgba(238,240,230,0.14);
+    padding: 3px 7px 2px;
+    border-radius: 3px;
+  }
+  .cmdk-list {
+    max-height: 360px;
+    overflow-y: auto;
+    padding: 6px 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(238,240,230,0.18) transparent;
+  }
+  .cmdk-list::-webkit-scrollbar { width: 6px; }
+  .cmdk-list::-webkit-scrollbar-thumb { background: rgba(238,240,230,0.14); border-radius: 3px; }
+  .cmdk-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px 18px;
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 13px;
+    border-left: 2px solid transparent;
+    transition: background 100ms ease, border-color 100ms ease;
+  }
+  .cmdk-item.active {
+    background: rgba(242,149,89,0.07);
+    border-left-color: var(--accent);
+  }
+  .cmdk-item .kind {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    width: 44px;
+    flex-shrink: 0;
+  }
+  .cmdk-item.active .kind { color: var(--accent); }
+  .cmdk-item .label {
+    flex: 1;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .cmdk-item .meta {
+    font-size: 11px;
+    color: var(--ink-dim);
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  .cmdk-empty {
+    padding: 22px 18px;
+    text-align: center;
+    color: var(--ink-dim);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+  .cmdk-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 18px;
+    border-top: 1px solid rgba(238,240,230,0.06);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .cmdk-foot b {
+    font-weight: 400;
+    background: rgba(238,240,230,0.06);
+    color: var(--ink);
+    padding: 2px 6px 1px;
+    margin: 0 5px;
+    border-radius: 3px;
+  }
+
+  /* ⌘K hint pill, fixed bottom-right */
+  .cmdk-hint {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 6;
+    display: inline-flex; align-items: center; gap: 8px;
+    cursor: pointer;
+    background: rgba(15,19,20,0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(238,240,230,0.10);
+    padding: 6px 9px 5px 11px;
+    color: var(--ink-dim);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    transition: color 140ms ease, border-color 140ms ease, background 140ms ease;
+  }
+  .cmdk-hint:hover { color: var(--ink); border-color: rgba(238,240,230,0.22); background: rgba(15,19,20,0.78); }
+  .cmdk-hint .k {
+    display: inline-flex; align-items: center;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 10px;
+    letter-spacing: 0;
+    color: var(--ink);
+    background: rgba(238,240,230,0.06);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  /* hide on touch / small screens — no keyboard shortcut */
+  @media (max-width: 720px), (hover: none) {
+    .cmdk-hint { display: none; }
+  }
+</style>
 </head>
-
 <body>
-  <section id="left">
-    <div>
-      <h1>glenn sonna</h1>
-      <h3 id="subtitle">software <span class="txt-rotate" data-period="2000"data-rotate='[ "engineer", "consultant", "contractor", "<3"]'></span>
-      </h3>
-    </div>
-    <h2>I'm independant
-      <a href="" onclick="Calendly.showPopupWidget('https://calendly.com/glenn-sonna');return false;">
-      Schedule time with me
-      </a>
-    </h2>
-    <div id="bottom">
-      <ul>
-        <li><a href="https://medium.com/@theGlenn" target="_blank">medium</a></li>
-        <li><a href="https://twitter.com/GlennSonna" target="_blank">twitter</a></li>
-        <li><a href="https://github.com/theGlenn/" target="_blank">github</a></li>
-        <li><a href="https://www.linkedin.com/in/glenn-sonna-99b18261" target="_blank">linkedIn</a></li>
-        <li><a href="https://angel.co/glenn-sonna" target="_blank">angelList</a></li>
-      </ul>
-      <span id="divider"></span>
-      <div id="talk-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/0mwAVwM75kM?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <canvas id="scene"></canvas>
+
+  <div class="cmdk-backdrop" id="cmdk" aria-hidden="true">
+    <div class="cmdk" role="dialog" aria-label="Command palette">
+      <div class="cmdk-input-wrap">
+        <svg class="glyph" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="6" r="4"></circle><path d="M9 9l3.5 3.5"></path></svg>
+        <input class="cmdk-input" id="cmdkInput" type="text" placeholder="Search commands, sections, links…" autocomplete="off" spellcheck="false">
+        <span class="cmdk-esc">ESC</span>
+      </div>
+      <div class="cmdk-list" id="cmdkList"></div>
+      <div class="cmdk-foot">
+        <div><b>↑↓</b> nav <b>↵</b> select <b>⎋</b> close</div>
+        <div>glennso.dev</div>
       </div>
     </div>
-  </section>
-  <section id="right">
-    <ul>
-      <li>I lead,</li>
-      <li>I build,</li>
-      <li>I teach.</li>
-    </ul>
-  </section>
-  <!-- GoogleAnalytics being -->
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)		
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-    ga('create', 'UA-41046173-1', 'glennsonna.com');
-    ga('send', 'pageview');
+  </div>
+
+  <div class="chrome top">
+    <div class="brand">glennso<span>.dev</span></div>
+  </div>
+
+  <div class="overlay">
+    <div class="col">
+
+      <div class="hero">
+        <h1>glenn<span class="cursor"></span></h1>
+        <p>Engineer &amp; entrepreneur. Currently building the future of AI apps at <a class="inline-ref" href="https://xybrid.ai" target="_blank" rel="noreferrer">Xybrid</a>. Writes fictions and real things sometimes.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-label lead"><span class="loader" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Building</div>
+        <div class="logos">
+          <a class="logo" href="https://www.xybrid.ai/" target="_blank" rel="noreferrer">
+            <span class="mark"><img src="assets/logos/xybrid.jpg" alt=""></span>
+            <span class="name">Xybrid</span>
+            <span class="role">CEO</span>
+          </a>
+          <a class="logo" href="https://www.getmirage.co/" target="_blank" rel="noreferrer">
+            <span class="mark"><img src="https://www.google.com/s2/favicons?domain=getmirage.co&sz=128" alt=""></span>
+            <span class="name">Mirage</span>
+            <span class="role">Powered by Xybrid</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Past work</div>
+        <div class="logos small">
+          <a class="logo" href="https://techcrunch.com/2020/02/28/anonymous-snapchat-group-chat-yolo/" target="_blank" rel="noreferrer"><span class="mark"><img src="assets/logos/yolo.png" alt=""></span><span class="name">YOLO</span></a>
+          <a class="logo" href="https://flashtape-vlog-with-friends.en.softonic.com/android" target="_blank" rel="noreferrer"><span class="mark"><img src="assets/logos/flashtape.png" alt=""></span><span class="name">Flashtape</span></a>
+          <a class="logo" href="https://catch-10s-to-reply.en.softonic.com/iphone" target="_blank" rel="noreferrer"><span class="mark"><img src="assets/logos/catch.png" alt=""></span><span class="name">Catch</span></a>
+          <a class="logo" href="https://www.sunset.video" target="_blank" rel="noreferrer"><span class="mark"><img src="https://www.google.com/s2/favicons?domain=sunset.video&sz=128" alt=""></span><span class="name">Sunset</span></a>
+          <a class="logo" href="https://www.blablacar.co.uk" target="_blank" rel="noreferrer"><span class="mark"><img src="https://www.google.com/s2/favicons?domain=blablacar.co.uk&sz=128" alt=""></span><span class="name">BlaBlaCar</span></a>
+          <a class="logo" href="https://www.mini.gifts/" target="_blank" rel="noreferrer"><span class="mark"><img src="assets/logos/mini.jpg" alt=""></span><span class="name">Mini</span></a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Elsewhere</div>
+        <div class="links">
+          <a class="link" href="https://x.com/GlennSonna" target="_blank" rel="noreferrer">X<span class="arrow">↗</span></a>
+          <a class="link" href="https://uk.linkedin.com/in/glenn-sonna-99b18261" target="_blank" rel="noreferrer">LinkedIn<span class="arrow">↗</span></a>
+          <a class="link" href="https://github.com/theGlenn" target="_blank" rel="noreferrer">GitHub<span class="arrow">↗</span></a>
+          <a class="link" href="https://substack.com/@1234688387" target="_blank" rel="noreferrer">Substack<span class="arrow">↗</span></a>
+          <a class="link" href="https://humandirectory.ai/glenn-so" target="_blank" rel="noreferrer">Directory<span class="arrow">↗</span></a>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-label">Writing</div>
+        <div class="articles">
+          <a class="article" href="https://dev.to/xybrid/run-ai-models-on-device-zero-config-five-minutes-21k1" target="_blank" rel="noreferrer">
+            <span class="date">2026.04</span>
+            <span class="title">Run AI models on-device, zero-config, in five minutes</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="article" href="https://medium.com/hackernoon/handling-and-documenting-graphql-errors-using-apollo-prophecy-apollo-7a32de3547a1" target="_blank" rel="noreferrer">
+            <span class="date">2018.07</span>
+            <span class="title">Handling and documenting GraphQL errors using Apollo Prophecy</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="article" href="https://blog.lewagon.com/skills/introduction-graphql/" target="_blank" rel="noreferrer">
+            <span class="date">2017.07</span>
+            <span class="title">An introduction to GraphQL</span>
+            <span class="arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="chrome bot"></div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
   </script>
-  <!-- end GoogleAnalytics  -->
+  <script type="module">
+    import * as THREE from 'three';
 
-  <script src="js/main.min.js"></script>
+    // ───────────────────────────────────────────────────────────────────────
+    // Procedural terrain — value noise + fBm (classical multi-octave approach)
+    // ───────────────────────────────────────────────────────────────────────
+    const SEED = 1337;
+    function hash2(x, y) {
+      // deterministic pseudo-random in [0,1)
+      let h = Math.sin(x * 127.1 + y * 311.7 + SEED) * 43758.5453;
+      return h - Math.floor(h);
+    }
+    function smoothstep(t) { return t * t * (3 - 2 * t); }
+    function valueNoise(x, y) {
+      const xi = Math.floor(x), yi = Math.floor(y);
+      const xf = x - xi, yf = y - yi;
+      const u = smoothstep(xf), v = smoothstep(yf);
+      const a = hash2(xi,     yi);
+      const b = hash2(xi + 1, yi);
+      const c = hash2(xi,     yi + 1);
+      const d = hash2(xi + 1, yi + 1);
+      return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
+    }
+    function fbm(x, y, octaves = 5) {
+      let total = 0, amp = 1, freq = 1, norm = 0;
+      for (let i = 0; i < octaves; i++) {
+        total += valueNoise(x * freq, y * freq) * amp;
+        norm  += amp;
+        amp   *= 0.5;
+        freq  *= 2.0;
+      }
+      return total / norm;
+    }
 
-  <!-- Calendly link widget begin -->
-  <script async src="https://calendly.com/assets/external/widget.js" type="text/javascript"></script>
-  <!-- end Calendly link widget  -->
+    // ───────────────────────────────────────────────────────────────────────
+    // Scene
+    // ───────────────────────────────────────────────────────────────────────
+    const canvas   = document.getElementById('scene');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x07090a, 1);
+
+    const scene  = new THREE.Scene();
+    scene.fog = new THREE.Fog(0x07090a, 60, 220);
+
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 600);
+    camera.position.set(0, 32, 70);
+    camera.lookAt(0, -4, 0);
+
+    // ───────────────────────────────────────────────────────────────────────
+    // Terrain mesh
+    // ───────────────────────────────────────────────────────────────────────
+    const SIZE = 260;
+    const SEGS = 220;
+    const geom = new THREE.PlaneGeometry(SIZE, SIZE, SEGS, SEGS);
+    geom.rotateX(-Math.PI / 2);
+
+    const pos = geom.attributes.position;
+    const HEIGHT_SCALE = 14;
+    const NOISE_SCALE = 0.022;
+    // bake elevations
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const z = pos.getZ(i);
+      // domain-warp the lookup so the terrain isn't axis-aligned
+      const wx = x + fbm(x * 0.01 + 7.2, z * 0.01 - 3.1, 3) * 18;
+      const wz = z + fbm(x * 0.01 - 4.7, z * 0.01 + 9.4, 3) * 18;
+      // straightforward fBm — high values = peaks, low values = valleys
+      const h = fbm(wx * NOISE_SCALE, wz * NOISE_SCALE, 6);
+      // gentle power curve to lift peaks above the average
+      const shaped = Math.pow(h, 1.4);
+      // edge falloff so the plate feels like an island
+      const r = Math.sqrt(x * x + z * z) / (SIZE * 0.5);
+      const falloff = Math.max(0, 1 - Math.pow(r, 2.2));
+      pos.setY(i, (shaped - 0.35) * HEIGHT_SCALE * falloff);
+    }
+    geom.computeVertexNormals();
+
+    // ───────────────────────────────────────────────────────────────────────
+    // Shader material — base shading + procedural grid + scan pulse
+    // ───────────────────────────────────────────────────────────────────────
+    const uniforms = {
+      uTime:        { value: 0 },
+      uPulseStart:  { value: -1000 },
+      uPulseSpeed:  { value: 70.0 },     // units / second
+      uPulseWidth:  { value: 6.0 },
+      uMaxRadius:   { value: 200.0 },
+      uBaseColor:   { value: new THREE.Color('#4a5a3d') },
+      uScanColor:   { value: new THREE.Color('#F29559') },
+      uHighColor:   { value: new THREE.Color('#c8d6a8') },
+      uFogColor:    { value: new THREE.Color('#07090a') },
+      uPulseDir:    { value: new THREE.Vector2(1.0, 1.0).normalize() },
+      uPulseMin:    { value: -180.0 },
+      uPulseMax:    { value:  180.0 },
+      uPulseMode:   { value:  0.0 },                     // 0 = linear, 1 = radial
+      uPulseOrigin: { value: new THREE.Vector2(0, 0) },  // world XZ of radial click
+    };
+
+    const vertexShader = /* glsl */`
+      varying vec3 vWorldPos;
+      varying vec3 vLocalPos;
+      varying float vElevation;
+      varying vec3 vNormal;
+      void main() {
+        vLocalPos = position;
+        vElevation = position.y;
+        vNormal = normalize(normalMatrix * normal);
+        vec4 wp = modelMatrix * vec4(position, 1.0);
+        vWorldPos = wp.xyz;
+        gl_Position = projectionMatrix * viewMatrix * wp;
+      }
+    `;
+
+    const fragmentShader = /* glsl */`
+      precision highp float;
+      uniform float uTime;
+      uniform float uPulseStart;
+      uniform float uPulseSpeed;
+      uniform float uPulseWidth;
+      uniform float uMaxRadius;
+      uniform float uPulseMin;
+      uniform float uPulseMax;
+      uniform vec2  uPulseDir;
+      uniform float uPulseMode;
+      uniform vec2  uPulseOrigin;
+      uniform vec3  uBaseColor;
+      uniform vec3  uScanColor;
+      uniform vec3  uHighColor;
+      uniform vec3  uFogColor;
+      varying vec3  vWorldPos;
+      varying vec3  vLocalPos;
+      varying float vElevation;
+      varying vec3  vNormal;
+
+      // anti-aliased grid line — returns 1 on the line, 0 between
+      float gridLine(vec2 coord, float spacing, float thickness) {
+        vec2 g = abs(fract(coord / spacing - 0.5) - 0.5) / fwidth(coord / spacing);
+        float line = min(g.x, g.y);
+        return 1.0 - smoothstep(0.0, thickness, line);
+      }
+
+      // elevation contour lines
+      float contour(float h, float spacing, float thickness) {
+        float c = abs(fract(h / spacing - 0.5) - 0.5) / fwidth(h / spacing);
+        return 1.0 - smoothstep(0.0, thickness, c);
+      }
+
+      void main() {
+        // time since the last pulse fired
+        float t = uTime - uPulseStart;
+        float totalLen = uPulseMax - uPulseMin;
+
+        // linear (default): wave travels along uPulseDir from uPulseMin -> uPulseMax
+        // radial (click):   wave expands from uPulseOrigin outward (proj is radius)
+        float proj, pulseFront, maxFront;
+        if (uPulseMode < 0.5) {
+          proj       = dot(vWorldPos.xz, uPulseDir);
+          pulseFront = uPulseMin + t * uPulseSpeed;
+          maxFront   = totalLen;
+        } else {
+          proj       = length(vWorldPos.xz - uPulseOrigin);
+          pulseFront = t * uPulseSpeed;
+          maxFront   = uMaxRadius;
+        }
+
+        // band: 1.0 at the wave-front, with a soft trail behind it
+        float band = 0.0;
+        if (t > 0.0 && pulseFront < maxFront + 30.0) {
+          float d = proj - pulseFront;
+          // sharp leading edge
+          float lead = 1.0 - smoothstep(0.0, uPulseWidth, abs(d));
+          // soft trail BEHIND the front (d < 0 means already swept)
+          float trail = smoothstep(-55.0, 0.0, d) * step(d, 0.0) * 0.45;
+          band = max(lead, trail);
+        }
+        // overall pulse intensity decays once the front has reached the far edge
+        float life = clamp(1.0 - (t * uPulseSpeed - maxFront) / 30.0, 0.0, 1.0);
+        band *= life;
+
+        // grid lines on terrain (world-aligned) — denser for richer texture
+        float gMicro = gridLine(vWorldPos.xz, 1.5, 1.0);
+        float gMinor = gridLine(vWorldPos.xz, 3.0, 1.2);
+        float gMajor = gridLine(vWorldPos.xz, 15.0, 1.4);
+
+        // elevation contour lines — tighter spacing
+        float ctrMinor = contour(vElevation, 0.6, 1.0);
+        float ctrMajor = contour(vElevation, 2.4, 1.4);
+
+        // base shading from normal — strong side-light so slopes shade clearly
+        vec3 lightDir = normalize(vec3(0.65, 0.55, 0.45));
+        float lambert = max(dot(normalize(vNormal), lightDir), 0.0);
+        // a touch of fake ambient occlusion from the up-facing component
+        float upFacing = clamp(vNormal.y, 0.0, 1.0);
+
+        // height ramp: low areas darker, high areas brighter
+        float hN = clamp((vElevation + 5.0) / 12.0, 0.0, 1.0);
+        vec3 lowCol  = uBaseColor * 0.18;
+        vec3 midCol  = uBaseColor;
+        vec3 highCol = mix(uBaseColor, uHighColor, 0.8);
+        vec3 base = mix(lowCol, midCol, smoothstep(0.0, 0.55, hN));
+        base = mix(base, highCol, smoothstep(0.55, 1.0, hN));
+        // lambert: peaks lit, slopes shaded, valleys darker still
+        base *= (0.35 + 0.75 * lambert) * (0.7 + 0.3 * upFacing);
+
+        // add grid + contours as faint emissive overlay
+        vec3 col = base;
+        col += uBaseColor * gMicro * 0.10;
+        col += uHighColor * gMinor * 0.16;
+        col += uHighColor * gMajor * 0.22;
+        col += uHighColor * ctrMinor * 0.08;
+        col += uHighColor * ctrMajor * 0.14;
+
+        // scan highlight — boost grid + base where the wave is
+        float scanBoost = band;
+        col += uScanColor * scanBoost * (
+          0.55
+          + gMicro    * 0.5
+          + gMinor    * 0.9
+          + gMajor    * 1.4
+          + ctrMinor  * 0.5
+          + ctrMajor  * 0.9
+        );
+
+        // distance falloff (from world origin) so far edges melt into the background
+        float radial = length(vWorldPos.xz);
+        float falloff = 1.0 - smoothstep(uMaxRadius * 0.55, uMaxRadius, radial);
+        col *= falloff;
+
+        // fog
+        float depth = length(vWorldPos - cameraPosition);
+        float fogF = smoothstep(60.0, 220.0, depth);
+        col = mix(col, uFogColor, fogF);
+
+        gl_FragColor = vec4(col, 1.0);
+      }
+    `;
+
+    const mat = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader,
+      fragmentShader,
+      fog: false, // we do our own
+    });
+
+    const terrain = new THREE.Mesh(geom, mat);
+    scene.add(terrain);
+
+    // ───────────────────────────────────────────────────────────────────────
+    // Pulse scheduler — fire every 4 seconds
+    // ───────────────────────────────────────────────────────────────────────
+    const PULSE_INTERVAL = 4.0;
+    // pulse travels from one corner to the opposite corner — diagonal sweep
+    uniforms.uPulseSpeed.value = (uniforms.uPulseMax.value - uniforms.uPulseMin.value) / (PULSE_INTERVAL * 0.75);
+    let lastPulseAt = 0.0;
+    let nextPulseAt = 1.0; // first pulse 1s in so the page has a moment to settle
+
+    function firePulse(now, opts) {
+      uniforms.uPulseStart.value = now;
+      uniforms.uPulseMode.value = (opts && opts.radial) ? 1.0 : 0.0;
+      lastPulseAt = now;
+      nextPulseAt = now + PULSE_INTERVAL;
+    }
+    window.firePulse = firePulse;
+
+    // ───────────────────────────────────────────────────────────────────────
+    // Resize + render loop
+    // ───────────────────────────────────────────────────────────────────────
+    function resize() {
+      const w = window.innerWidth, h = window.innerHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const clock = new THREE.Clock();
+    function tick() {
+      const now = clock.getElapsedTime();
+      uniforms.uTime.value = now;
+
+      if (now >= nextPulseAt) firePulse(now);
+
+      // slow camera drift for parallax — visible but unhurried
+      const r = 70;
+      const a = now * 0.05;
+      camera.position.x = Math.sin(a) * 14;
+      camera.position.z = r + Math.cos(a) * 6;
+      camera.position.y = 30 + Math.sin(now * 0.12) * 2.0;
+      camera.lookAt(0, -3, 0);
+
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    }
+    tick();
+
+    // click-to-pulse: radial wave from the click point on the terrain
+    const raycaster = new THREE.Raycaster();
+    const ndc = new THREE.Vector2();
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      ndc.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      ndc.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      raycaster.setFromCamera(ndc, camera);
+      const hits = raycaster.intersectObject(terrain);
+      if (!hits.length) return;
+      const p = hits[0].point;
+      uniforms.uPulseOrigin.value.set(p.x, p.z);
+      firePulse(clock.getElapsedTime(), { radial: true });
+    });
+    window.__clock = clock;
+  </script>
+
+  <script>
+    // attach a discoverable ⌘K pill, fixed bottom-right
+    (function attachHint() {
+      const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent || '');
+      const keyLabel = isMac ? '⌘K' : 'Ctrl K';
+      const hint = document.createElement('div');
+      hint.className = 'cmdk-hint';
+      hint.innerHTML = '<span class="k">' + keyLabel + '</span><span>commands</span>';
+      hint.addEventListener('click', () => window.openCmdK && window.openCmdK());
+      document.body.appendChild(hint);
+    })();
+    // command bar — ⌘K / Ctrl+K
+    (function () {
+      const COMMANDS = [
+        { kind: 'jump', label: 'Building',         action: () => jumpTo('Building') },
+        { kind: 'jump', label: 'Past work',        action: () => jumpTo('Past work') },
+        { kind: 'jump', label: 'Elsewhere',        action: () => jumpTo('Elsewhere') },
+        { kind: 'jump', label: 'Writing',          action: () => jumpTo('Writing') },
+        { kind: 'open', label: 'Xybrid',           meta: 'xybrid.ai',            action: () => openUrl('https://www.xybrid.ai/') },
+        { kind: 'open', label: 'Mirage',           meta: 'getmirage.co',         action: () => openUrl('https://www.getmirage.co/') },
+        { kind: 'open', label: 'YOLO',             meta: 'techcrunch.com',       action: () => openUrl('https://techcrunch.com/2020/02/28/anonymous-snapchat-group-chat-yolo/') },
+        { kind: 'open', label: 'Flashtape',        meta: 'softonic.com',         action: () => openUrl('https://flashtape-vlog-with-friends.en.softonic.com/android') },
+        { kind: 'open', label: 'Catch',            meta: 'softonic.com',         action: () => openUrl('https://catch-10s-to-reply.en.softonic.com/iphone') },
+        { kind: 'open', label: 'Sunset',           meta: 'sunset.video',         action: () => openUrl('https://www.sunset.video') },
+        { kind: 'open', label: 'BlaBlaCar',        meta: 'blablacar.co.uk',      action: () => openUrl('https://www.blablacar.co.uk') },
+        { kind: 'open', label: 'Mini',             meta: 'mini.gifts',           action: () => openUrl('https://www.mini.gifts/') },
+        { kind: 'open', label: 'X / Twitter',      meta: '@GlennSonna',          action: () => openUrl('https://x.com/GlennSonna') },
+        { kind: 'open', label: 'LinkedIn',         meta: 'linkedin.com',         action: () => openUrl('https://uk.linkedin.com/in/glenn-sonna-99b18261') },
+        { kind: 'open', label: 'GitHub',           meta: 'github.com/theGlenn',  action: () => openUrl('https://github.com/theGlenn') },
+        { kind: 'open', label: 'Substack',         meta: 'substack.com',         action: () => openUrl('https://substack.com/@1234688387') },
+        { kind: 'open', label: 'Human Directory',  meta: 'humandirectory.ai',    action: () => openUrl('https://humandirectory.ai/glenn-so') },
+        { kind: 'open', label: 'Email',            meta: 'glen@xybrid.ai',       action: () => openUrl('mailto:glen@xybrid.ai') },
+        { kind: 'read', label: 'Run AI models on-device',                                meta: 'dev.to · 2026',     action: () => openUrl('https://dev.to/xybrid/run-ai-models-on-device-zero-config-five-minutes-21k1') },
+        { kind: 'read', label: 'Handling GraphQL errors with Apollo Prophecy',           meta: 'hackernoon · 2018', action: () => openUrl('https://medium.com/hackernoon/handling-and-documenting-graphql-errors-using-apollo-prophecy-apollo-7a32de3547a1') },
+        { kind: 'read', label: 'An introduction to GraphQL',                             meta: 'lewagon · 2017',    action: () => openUrl('https://blog.lewagon.com/skills/introduction-graphql/') },
+        { kind: 'do',   label: 'Fire scan pulse',  meta: 'terrain',              action: () => window.firePulse && window.firePulse(window.__clock.getElapsedTime()) },
+      ];
+
+      const backdrop = document.getElementById('cmdk');
+      const input = document.getElementById('cmdkInput');
+      const list = document.getElementById('cmdkList');
+      let active = 0;
+      let filtered = COMMANDS.slice();
+
+      function jumpTo(name) {
+        const col = document.querySelector('.col');
+        const labels = [...col.querySelectorAll('.section-label')];
+        const target = labels.find(l => l.textContent.trim().toLowerCase() === name.toLowerCase());
+        if (!target) return;
+        const section = target.closest('.section');
+        const top = section.offsetTop - 28;
+        col.scrollTo({ top, behavior: 'smooth' });
+      }
+      function openUrl(url) {
+        if (url.startsWith('mailto:')) { window.location.href = url; return; }
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+
+      function score(cmd, q) {
+        if (!q) return 1;
+        const hay = (cmd.label + ' ' + cmd.kind + ' ' + (cmd.meta || '')).toLowerCase();
+        if (hay.includes(q)) return 2 - hay.indexOf(q) / hay.length;
+        // soft fuzzy: every char of q appears in order
+        let i = 0;
+        for (const c of hay) { if (c === q[i]) i++; if (i === q.length) return 0.5; }
+        return 0;
+      }
+
+      function render() {
+        list.innerHTML = '';
+        if (!filtered.length) {
+          list.innerHTML = '<div class="cmdk-empty">No matches</div>';
+          return;
+        }
+        filtered.forEach((cmd, i) => {
+          const el = document.createElement('div');
+          el.className = 'cmdk-item' + (i === active ? ' active' : '');
+          el.innerHTML = '<span class="kind">' + cmd.kind + '</span>'
+            + '<span class="label">' + cmd.label + '</span>'
+            + (cmd.meta ? '<span class="meta">' + cmd.meta + '</span>' : '');
+          el.addEventListener('click', () => { execute(i); });
+          el.addEventListener('mousemove', () => { if (active !== i) { active = i; updateActive(); } });
+          list.appendChild(el);
+        });
+      }
+      function updateActive() {
+        [...list.children].forEach((c, i) => c.classList && c.classList.toggle('active', i === active));
+        const el = list.children[active];
+        if (el && el.scrollIntoView) {
+          const top = el.offsetTop, bot = top + el.offsetHeight;
+          if (top < list.scrollTop) list.scrollTop = top;
+          else if (bot > list.scrollTop + list.clientHeight) list.scrollTop = bot - list.clientHeight;
+        }
+      }
+      function applyFilter() {
+        const q = input.value.trim().toLowerCase();
+        filtered = COMMANDS.map(c => ({ c, s: score(c, q) }))
+          .filter(x => x.s > 0)
+          .sort((a, b) => b.s - a.s)
+          .map(x => x.c);
+        active = 0;
+        render();
+      }
+      function execute(i) {
+        const cmd = filtered[i];
+        if (!cmd) return;
+        close();
+        setTimeout(() => cmd.action(), 0);
+      }
+      function open() {
+        backdrop.classList.add('open');
+        backdrop.setAttribute('aria-hidden', 'false');
+        input.value = '';
+        filtered = COMMANDS.slice();
+        active = 0;
+        render();
+        setTimeout(() => input.focus(), 20);
+      }
+      function close() {
+        backdrop.classList.remove('open');
+        backdrop.setAttribute('aria-hidden', 'true');
+      }
+
+      input.addEventListener('input', applyFilter);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); if (filtered.length) { active = (active + 1) % filtered.length; updateActive(); } }
+        else if (e.key === 'ArrowUp')   { e.preventDefault(); if (filtered.length) { active = (active - 1 + filtered.length) % filtered.length; updateActive(); } }
+        else if (e.key === 'Enter')     { e.preventDefault(); execute(active); }
+        else if (e.key === 'Escape')    { e.preventDefault(); close(); }
+      });
+      backdrop.addEventListener('click', (e) => { if (e.target === backdrop) close(); });
+
+      window.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          if (backdrop.classList.contains('open')) close(); else open();
+        } else if (e.key === '/' && !backdrop.classList.contains('open') && document.activeElement.tagName !== 'INPUT') {
+          e.preventDefault();
+          open();
+        }
+      });
+
+      // expose for any chrome trigger
+      window.openCmdK = open;
+    })();
+  </script>
 </body>
-
 </html>
-
