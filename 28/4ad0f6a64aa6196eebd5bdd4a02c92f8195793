@@ -1,0 +1,25 @@
+index.html
+  s_928eea0382adc3::t_df6d7ce71e5f3b 138
+  s_928eea0382adc3::t_1d83c2096bd63d 172-178,181-192
+  s_928eea0382adc3::t_6d4a70b79871aa 221
+  s_928eea0382adc3::t_6ba7af70edd0ec 391
+  s_928eea0382adc3::t_bba91687e51eb5 506
+  s_928eea0382adc3::t_fd145f8bbb84a4 27,664
+  s_928eea0382adc3::t_24b51544e88ff2 141
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "284ad0f6a64aa6196eebd5bdd4a02c92f8195793",
+  "prompts": {},
+  "sessions": {
+    "s_928eea0382adc3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7bbaa8a9-e988-4cd5-aaf2-ad5d914ebb78",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Glenn Sonna <kenpachi.os@gmail.com>"
+    }
+  }
+}
