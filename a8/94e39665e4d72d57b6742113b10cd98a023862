@@ -1,0 +1,28 @@
+index.html
+  s_928eea0382adc3::t_0dc5e2bc867905 522-525
+  s_928eea0382adc3::t_e868adcedfad6f 6,9,12,474
+  s_928eea0382adc3::t_2f387eb4a1321f 901-904
+  s_928eea0382adc3::t_4de43eda67ef1e 906-908
+  s_928eea0382adc3::t_af7e3c8f6df119 152-159
+  s_928eea0382adc3::t_fc4cf334bb05fc 7-8,10-11,13-18
+  s_928eea0382adc3::t_10ad194999f236 488
+  s_928eea0382adc3::t_b8d4693cfd0d1b 480
+  s_928eea0382adc3::t_f0ab8c1a33a02e 536
+  s_928eea0382adc3::t_db77176d3214fe 1,4-5,19-151,160-423,425-460,462-473,475,477-479,481-486,489-504,506-521,526-531,533,546-549,551-560,562-563,565-594,596-602,604-694,696-900,905,909-1021
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "a894e39665e4d72d57b6742113b10cd98a023862",
+  "prompts": {},
+  "sessions": {
+    "s_928eea0382adc3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7bbaa8a9-e988-4cd5-aaf2-ad5d914ebb78",
+        "model": "unknown"
+      },
+      "human_author": "Glenn Sonna <kenpachi.os@gmail.com>"
+    }
+  }
+}
