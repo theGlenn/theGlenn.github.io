@@ -128,7 +128,13 @@
   }
   .overlay::after {
     bottom: 0;
-    background: linear-gradient(to top, rgba(7,9,10,0.92), rgba(7,9,10,0));
+    height: 130px;
+    background: linear-gradient(to top,
+      rgba(7,9,10,0.98) 0%,
+      rgba(7,9,10,0.88) 35%,
+      rgba(7,9,10,0.55) 70%,
+      rgba(7,9,10,0) 100%
+    );
   }
   .col {
     pointer-events: auto;
@@ -138,10 +144,10 @@
     max-width: 560px;
     max-height: calc(100vh - 148px);
     overflow-y: auto;
-    padding-bottom: 56px;
+    padding-bottom: 130px;
     scrollbar-width: none;
-    mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 56px), transparent 100%);
-    -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 56px), transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 130px), transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 130px), transparent 100%);
   }
   .col::-webkit-scrollbar { display: none; }
   /* hero */
@@ -557,11 +563,11 @@
       <div class="section">
         <div class="section-label">Elsewhere</div>
         <div class="links">
-          <a class="link" href="https://x.com/GlennSonna" target="_blank" rel="noreferrer">X / Twitter<span class="arrow">↗</span></a>
+          <a class="link" href="https://x.com/GlennSonna" target="_blank" rel="noreferrer">X<span class="arrow">↗</span></a>
           <a class="link" href="https://uk.linkedin.com/in/glenn-sonna-99b18261" target="_blank" rel="noreferrer">LinkedIn<span class="arrow">↗</span></a>
           <a class="link" href="https://github.com/theGlenn" target="_blank" rel="noreferrer">GitHub<span class="arrow">↗</span></a>
           <a class="link" href="https://substack.com/@1234688387" target="_blank" rel="noreferrer">Substack<span class="arrow">↗</span></a>
-          <a class="link" href="https://humandirectory.ai/glenn-so" target="_blank" rel="noreferrer">Human Directory<span class="arrow">↗</span></a>
+          <a class="link" href="https://humandirectory.ai/glenn-so" target="_blank" rel="noreferrer">Directory<span class="arrow">↗</span></a>
         </div>
       </div>
 
