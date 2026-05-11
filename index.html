@@ -39,6 +39,30 @@
     position: fixed; inset: 0;
     width: 100%; height: 100%;
     display: block;
+    animation: sceneIn 900ms ease-out 80ms both;
+  }
+
+  /* ─────────────── load choreography ─────────────── */
+  @keyframes sceneIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes contentIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .chrome.top    { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 450ms both; }
+  .col > .hero    { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 600ms both; }
+  .col > .section:nth-of-type(1) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 780ms  both; }
+  .col > .section:nth-of-type(2) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 920ms  both; }
+  .col > .section:nth-of-type(3) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 1060ms both; }
+  .col > .section:nth-of-type(4) { animation: contentIn 700ms cubic-bezier(0.22, 1, 0.36, 1) 1200ms both; }
+  .cmdk-hint     { animation: contentIn 600ms cubic-bezier(0.22, 1, 0.36, 1) 1400ms both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #scene, .chrome.top, .col > .hero, .col > .section, .cmdk-hint {
+      animation: none !important;
+    }
   }
   /* very light placeholder chrome so the screen isn't blank — content layer comes next */
   .chrome {
@@ -537,6 +561,7 @@
           <a class="link" href="https://uk.linkedin.com/in/glenn-sonna-99b18261" target="_blank" rel="noreferrer">LinkedIn<span class="arrow">↗</span></a>
           <a class="link" href="https://github.com/theGlenn" target="_blank" rel="noreferrer">GitHub<span class="arrow">↗</span></a>
           <a class="link" href="https://substack.com/@1234688387" target="_blank" rel="noreferrer">Substack<span class="arrow">↗</span></a>
+          <a class="link" href="https://humandirectory.ai/glenn-so" target="_blank" rel="noreferrer">Human Directory<span class="arrow">↗</span></a>
         </div>
       </div>
 
@@ -916,6 +941,7 @@
         { kind: 'open', label: 'LinkedIn',         meta: 'linkedin.com',         action: () => openUrl('https://uk.linkedin.com/in/glenn-sonna-99b18261') },
         { kind: 'open', label: 'GitHub',           meta: 'github.com/theGlenn',  action: () => openUrl('https://github.com/theGlenn') },
         { kind: 'open', label: 'Substack',         meta: 'substack.com',         action: () => openUrl('https://substack.com/@1234688387') },
+        { kind: 'open', label: 'Human Directory',  meta: 'humandirectory.ai',    action: () => openUrl('https://humandirectory.ai/glenn-so') },
         { kind: 'open', label: 'Email',            meta: 'glen@xybrid.ai',       action: () => openUrl('mailto:glen@xybrid.ai') },
         { kind: 'read', label: 'Run AI models on-device',                                meta: 'dev.to · 2026',     action: () => openUrl('https://dev.to/xybrid/run-ai-models-on-device-zero-config-five-minutes-21k1') },
         { kind: 'read', label: 'Handling GraphQL errors with Apollo Prophecy',           meta: 'hackernoon · 2018', action: () => openUrl('https://medium.com/hackernoon/handling-and-documenting-graphql-errors-using-apollo-prophecy-apollo-7a32de3547a1') },
