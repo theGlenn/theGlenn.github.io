@@ -1,0 +1,19 @@
+index.html
+  s_928eea0382adc3::t_9de0ea00fb990b 131-137,147,149-150
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "75b206e7d30f9b320ea17a44ef6358623d15d2a0",
+  "prompts": {},
+  "sessions": {
+    "s_928eea0382adc3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7bbaa8a9-e988-4cd5-aaf2-ad5d914ebb78",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Glenn Sonna <kenpachi.os@gmail.com>"
+    }
+  }
+}
